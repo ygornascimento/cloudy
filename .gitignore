@@ -1,14 +1,15 @@
 # Xcode
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
-
+.DS_Store
 ## User settings
 xcuserdata/
 
 ## compatibility with Xcode 8 and earlier (ignoring not required starting Xcode 9)
 *.xcscmblueprint
 *.xccheckout
-
+*.DS_Store
+movs_mvc-c/movs_mvc-c.xcodeproj/project.xcworkspace/xcuserdata/ygornascimento.xcuserdatad/UserInterfaceState.xcuserstate
 ## compatibility with Xcode 3 and earlier (ignoring not required starting Xcode 4)
 build/
 DerivedData/
