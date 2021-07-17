@@ -22,5 +22,10 @@ class SettingsTableViewCell: UITableViewCell {
         // Configure Cell
         selectionStyle = .none
     }
+    
+    func configure(with presentable: SettingsPresentable) {
+        mainLabel.text = presentable.text
+        accessoryType = presentable.accessoryType
+    }
 
 }
