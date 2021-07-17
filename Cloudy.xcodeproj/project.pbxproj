@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1EA7EAF626A31DCA006B3E50 /* DayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA7EAF526A31DCA006B3E50 /* DayViewModel.swift */; };
+		1EA7EAF826A32664006B3E50 /* UIIMage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA7EAF726A32664006B3E50 /* UIIMage+Extension.swift */; };
 		CC4AF182246E83960013D68C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4AF181246E83960013D68C /* AppDelegate.swift */; };
 		CC4AF184246E83960013D68C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4AF183246E83960013D68C /* SceneDelegate.swift */; };
 		CC4AF189246E83960013D68C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC4AF187246E83960013D68C /* Main.storyboard */; };
@@ -39,6 +41,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1EA7EAF526A31DCA006B3E50 /* DayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewModel.swift; sourceTree = "<group>"; };
+		1EA7EAF726A32664006B3E50 /* UIIMage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIIMage+Extension.swift"; sourceTree = "<group>"; };
 		CC4AF17E246E83960013D68C /* Cloudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cloudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC4AF181246E83960013D68C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC4AF183246E83960013D68C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +87,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1EA7EAF426A31DA8006B3E50 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				1EA7EAF526A31DCA006B3E50 /* DayViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		CC4AF175246E83960013D68C = {
 			isa = PBXGroup;
 			children = (
@@ -165,10 +177,11 @@
 		CC4AF19A246E84A20013D68C /* Weather View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				CC4AF19E246E84A20013D68C /* Table View Cells */,
+				1EA7EAF426A31DA8006B3E50 /* ViewModels */,
 				CC4AF19D246E84A20013D68C /* DayViewController.swift */,
 				CC4AF19C246E84A20013D68C /* WeekViewController.swift */,
 				CC4AF19B246E84A20013D68C /* WeatherViewController.swift */,
-				CC4AF19E246E84A20013D68C /* Table View Cells */,
 			);
 			path = "Weather View Controllers";
 			sourceTree = "<group>";
@@ -255,6 +268,7 @@
 			children = (
 				CC4AF1BF246E84B50013D68C /* Conversions.swift */,
 				CC4AF1C0246E84B50013D68C /* UserDefaults.swift */,
+				1EA7EAF726A32664006B3E50 /* UIIMage+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -377,6 +391,7 @@
 			files = (
 				CC4AF182246E83960013D68C /* AppDelegate.swift in Sources */,
 				CC4AF1B1246E84A20013D68C /* DayViewController.swift in Sources */,
+				1EA7EAF626A31DCA006B3E50 /* DayViewModel.swift in Sources */,
 				CC4AF1CD246E84CC0013D68C /* Location.swift in Sources */,
 				CC4AF1D6246E94EC0013D68C /* TimeNotation.swift in Sources */,
 				CC4AF1B8246E84A20013D68C /* SettingsTableViewCell.swift in Sources */,
@@ -397,6 +412,7 @@
 				CC4AF1CE246E84CC0013D68C /* WeatherData.swift in Sources */,
 				CC4AF1BA246E84A20013D68C /* RootViewController.swift in Sources */,
 				CC4AF1B9246E84A20013D68C /* SettingsViewController.swift in Sources */,
+				1EA7EAF826A32664006B3E50 /* UIIMage+Extension.swift in Sources */,
 				CC4AF1DA246E95590013D68C /* UnitsNotation.swift in Sources */,
 				CC4AF1B5246E84A20013D68C /* LocationRepresentable.swift in Sources */,
 				CC4AF1DC246E95660013D68C /* TemperatureNotation.swift in Sources */,
