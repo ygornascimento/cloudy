@@ -163,7 +163,7 @@ final class RootViewController: UIViewController {
             switch result {
             case .success(let weatherData):
                 // Configure Day View Controller
-                self?.dayViewController.now = weatherData
+                self?.dayViewController.viewModel = DayViewModel(weatherData: weatherData)
 
                 // Configure Week View Controller
                 self?.weekViewController.week = weatherData.dailyData
@@ -172,7 +172,7 @@ final class RootViewController: UIViewController {
                 self?.presentAlert(of: .noWeatherDataAvailable)
                 
                 // Update Child View Controllers
-                self?.dayViewController.now = nil
+                self?.dayViewController.viewModel = nil
                 self?.weekViewController.week = nil
             }
         }
