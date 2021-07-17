@@ -24,25 +24,11 @@ class WeekViewController: WeatherViewController {
     
     // MARK: -
 
-    var week: [WeatherDayData]? {
+    var viewModel: WeekViewModel? {
         didSet {
             updateView()
         }
     }
-
-    // MARK: -
-
-    private lazy var dayFormatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EEEE"
-        return dateFormatter
-    }()
-
-    private lazy var dateFormatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMMM d"
-        return dateFormatter
-    }()
 
     // MARK: - View Life Cycle
 
@@ -70,8 +56,8 @@ class WeekViewController: WeatherViewController {
         activityIndicatorView.stopAnimating()
         tableView.refreshControl?.endRefreshing()
 
-        if let week = week {
-            updateWeatherDataContainerView(with: week)
+        if viewModel != nil {
+            updateWeatherDataContainerView()
 
         } else {
             messageLabel.isHidden = false
@@ -98,7 +84,7 @@ class WeekViewController: WeatherViewController {
 
     // MARK: -
 
-    private func updateWeatherDataContainerView(with weatherData: [WeatherDayData]) {
+    private func updateWeatherDataContainerView() {
         // Show Weather Data Container View
         weatherDataContainerView.isHidden = false
 
@@ -117,15 +103,11 @@ class WeekViewController: WeatherViewController {
 extension WeekViewController: UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        week == nil ? 0 : 1
+        viewModel?.numberOfSections ?? 0
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let week = week else {
-            return 0
-        }
-        
-        return week.count
+        viewModel?.numbersOfDays ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -133,36 +115,12 @@ extension WeekViewController: UITableViewDataSource {
             fatalError("Unable to Dequeue Weather Day Table View Cell")
         }
 
-        if let week = week {
-            // Fetch Weather Data
-            let weatherData = week[indexPath.row]
-
-            var windSpeed = weatherData.windSpeed
-            var temperatureMin = weatherData.temperatureMin
-            var temperatureMax = weatherData.temperatureMax
-
-            if UserDefaults.temperatureNotation != .fahrenheit {
-                temperatureMin = temperatureMin.toCelcius
-                temperatureMax = temperatureMax.toCelcius
-            }
-
-            // Configure Cell
-            cell.dayLabel.text = dayFormatter.string(from: weatherData.time)
-            cell.dateLabel.text = dateFormatter.string(from: weatherData.time)
-
-            let min = String(format: "%.0f°", temperatureMin)
-            let max = String(format: "%.0f°", temperatureMax)
-
-            cell.temperatureLabel.text = "\(min) - \(max)"
-
-            if UserDefaults.unitsNotation != .imperial {
-                windSpeed = windSpeed.toKPH
-                cell.windSpeedLabel.text = String(format: "%.f KPH", windSpeed)
-            } else {
-                cell.windSpeedLabel.text = String(format: "%.f MPH", windSpeed)
-            }
-
-            cell.iconImageView.image = imageForIcon(withName: weatherData.icon)
+        if let viewModel = viewModel {
+            cell.dayLabel.text = viewModel.day(for: indexPath.row)
+            cell.dateLabel.text = viewModel.date(for: indexPath.row)
+            cell.iconImageView.image = viewModel.image(for: indexPath.row)
+            cell.windSpeedLabel.text = viewModel.windSpeed(for: indexPath.row)
+            cell.temperatureLabel.text = viewModel.temperature(for: indexPath.row)
         }
 
         return cell

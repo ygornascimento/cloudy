@@ -166,14 +166,14 @@ final class RootViewController: UIViewController {
                 self?.dayViewController.viewModel = DayViewModel(weatherData: weatherData)
 
                 // Configure Week View Controller
-                self?.weekViewController.week = weatherData.dailyData
+                self?.weekViewController.viewModel = WeekViewModel(weatherData: weatherData.dailyData)
             case .failure:
                 // Notify User
                 self?.presentAlert(of: .noWeatherDataAvailable)
                 
                 // Update Child View Controllers
                 self?.dayViewController.viewModel = nil
-                self?.weekViewController.week = nil
+                self?.weekViewController.viewModel = nil
             }
         }
     }
