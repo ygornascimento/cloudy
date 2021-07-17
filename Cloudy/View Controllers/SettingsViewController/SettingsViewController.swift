@@ -85,34 +85,31 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingsTableViewCell.reuseIdentifier, for: indexPath) as? SettingsTableViewCell else {
             fatalError("Unable to Dequeue Settings Table View Cell")
         }
-
-        switch section {
-        case .time:
-            guard let timeNotation = TimeNotation(rawValue: indexPath.row) else {
-                fatalError("Unexpected Index Path")
+        
+        let viewModel: SettingsPresentable = {
+            switch section {
+            case .time:
+                guard let timeNotation = TimeNotation(rawValue: indexPath.row) else {
+                    fatalError("Unexpected Index Path")
+                }
+                return SettingsTimeViewModel(timeNotation: timeNotation)
+                
+            case .units:
+                guard let unitNotation = UnitsNotation(rawValue: indexPath.row) else {
+                    fatalError("Unexpected Index Path")
+                }
+                return SettingsUnitsViewModel(unitsNotation: unitNotation)
+                
+            case .temperature:
+                guard let temperatureNotation = TemperatureNotation(rawValue: indexPath.row) else {
+                    fatalError("Unexpected Index Path")
+                }
+                return SettingsTemperatureViewModel(temperatureNotation: temperatureNotation)
             }
-            
-            let viewModel = SettingsTimeViewModel(timeNotation: timeNotation)
-            cell.mainLabel.text = viewModel.text
-            cell.accessoryType = viewModel.accessoryType
-            
-        case .units:
-            guard let unitNotation = UnitsNotation(rawValue: indexPath.row) else {
-                fatalError("Unexpected Index Path")
-            }
-            
-            let viewModel = SettingsUnitsViewModel(unitsNotation: unitNotation)
-            cell.mainLabel.text = viewModel.text
-            cell.accessoryType = viewModel.accessoryType
-            
-        case .temperature:
-            guard let temperatureNotation = TemperatureNotation(rawValue: indexPath.row) else {
-                fatalError("Unexpected Index Path")
-            }
-            let viewModel = SettingsTemperatureViewModel(temperatureNotation: temperatureNotation)
-            cell.mainLabel.text = viewModel.text
-            cell.accessoryType = viewModel.accessoryType
-        }
+        }()
+        
+        cell.mainLabel.text = viewModel.text
+        cell.accessoryType = viewModel.accessoryType
 
         return cell
     }

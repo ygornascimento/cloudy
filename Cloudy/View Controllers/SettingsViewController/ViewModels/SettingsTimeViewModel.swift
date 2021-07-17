@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct SettingsTimeViewModel {
+struct SettingsTimeViewModel: SettingsPresentable {
     let timeNotation: TimeNotation
         
     var text: String {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct SettingsTemperatureViewModel {
+struct SettingsTemperatureViewModel: SettingsPresentable {
     let temperatureNotation: TemperatureNotation
     
     var text: String {

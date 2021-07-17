@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct SettingsUnitsViewModel {
+struct SettingsUnitsViewModel: SettingsPresentable {
     let unitsNotation: UnitsNotation
     
     var text: String {
