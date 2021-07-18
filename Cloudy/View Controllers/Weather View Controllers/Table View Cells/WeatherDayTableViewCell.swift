@@ -26,5 +26,13 @@ class WeatherDayTableViewCell: UITableViewCell {
         // Configure Cell
         selectionStyle = .none
     }
+    
+    func configure(with presentable: WeatherDayPresentable) {
+        iconImageView.image = presentable.image
+        dayLabel.text = presentable.day
+        dateLabel.text = presentable.date
+        windSpeedLabel.text = presentable.windSpeed
+        temperatureLabel.text = presentable.temperature
+    }
 
 }

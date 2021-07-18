@@ -115,12 +115,8 @@ extension WeekViewController: UITableViewDataSource {
             fatalError("Unable to Dequeue Weather Day Table View Cell")
         }
 
-        if let viewModel = viewModel {
-            cell.dayLabel.text = viewModel.day(for: indexPath.row)
-            cell.dateLabel.text = viewModel.date(for: indexPath.row)
-            cell.iconImageView.image = viewModel.image(for: indexPath.row)
-            cell.windSpeedLabel.text = viewModel.windSpeed(for: indexPath.row)
-            cell.temperatureLabel.text = viewModel.temperature(for: indexPath.row)
+        if let viewModel = viewModel?.viewModel(for: indexPath.row) {
+            cell.configure(with: viewModel)
         }
 
         return cell
